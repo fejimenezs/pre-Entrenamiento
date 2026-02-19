@@ -1,0 +1,27 @@
+<div style="padding: 20px; font-family: sans-serif; background-color: #f4f4f4; min-height: 100vh;">
+  
+  <h1 style="text-align: center; color: #333;">🚀 Mis Oportunidades (Odoo CRM)</h1>
+  
+  <!-- OJO: Aquí agregamos los paréntesis leads() -->
+  <div *ngIf="leads().length === 0" style="text-align: center;">
+    <p>⏳ Cargando datos... (Esperando a Django)</p>
+  </div>
+
+  <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+    
+    <!-- OJO: Aquí también leads() -->
+    <div *ngFor="let lead of leads()" 
+         style="background: white; width: 280px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 5px solid #00878b;">
+      
+      <h2 style="margin-top: 0; font-size: 1.2rem; color: #2c3e50;">{{ lead.name }}</h2>
+      <p><strong>📧 Email:</strong> <br> {{ lead.email_from || 'Sin correo' }}</p>
+      <p><strong>💰 Probabilidad:</strong> {{ lead.probability }}%</p>
+      
+      <div style="margin-top: 10px; padding: 5px; background: #e0f7fa; color: #006064; border-radius: 5px; display: inline-block;">
+        <strong>Estado:</strong> {{ lead.stage_id[1] }}
+      </div>
+      
+    </div>
+
+  </div>
+</div>
